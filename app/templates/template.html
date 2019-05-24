@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static',filename='fonts/line-icons.css') }}">
+    
+ </head>
+ <body>
+    <header id="header-wrap">
+
+      <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <h1 class="navbar-brand">Team 090 - Data Warehouse</h1>       
+          <div class="navbar-toggler" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('main_menu') }}">
+                  Home
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('main_menu') }}">
+                  Home
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </header>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+     
+    {% block content %}
+    {% endblock %}
+ </body>
+</html>

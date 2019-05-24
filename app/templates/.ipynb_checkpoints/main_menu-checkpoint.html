@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="Team090">
+    <title>Data Warehouse - Main Menu</title>
+<style>
+h2 {font-family: Arial, Helvetica, sans-serif;
+    color: gray}
+.buttonContainer{
+    position: absolute;
+    top: 5%;
+    left:10%;
+    width:1000px;
+}
+.class='but' {
+    float:left;
+}
+
+a.button {
+    background-color: #008CBA; /* Green */
+    border: none;
+    width: 400px;
+    color: white;
+    padding: 50px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+
+a.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #008CBA;} /* Red */
+.button4 {background-color: #008CBA;} /* Gray */
+
+</style>
+    
+<script type="text/javascript">
+    <!--
+    function updateTime() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+        if (minutes < 10){
+            minutes = "0" + minutes;
+        }
+        if (seconds < 10){
+            seconds = "0" + seconds;
+        }
+        var v = hours + ":" + minutes + ":" + seconds + " ";
+        if(hours > 11){
+            v+="PM";
+        } else {
+            v+="AM"
+        }
+        setTimeout("updateTime()",1000);
+        document.getElementById('time').innerHTML=v;
+    }
+    updateTime();
+    //-->
+</script>
+    
+</head>
+<body>
+    
+    <header>
+        <h6>Current Time: <span id="time" /></h6>
+        <script type = "text/javascript"
+                src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+
+    </header>
+  <canvas id="canvas0" width=800 height=300></canvas>
+  <canvas id="canvas1" width=800 height=300></canvas>
+  <canvas id="canvas2" width=800 height=300></canvas>
+  <canvas id="canvas3" width=800 height=300></canvas>
+  <canvas id="canvas4" width=800 height=300></canvas>
+  <canvas id="canvas5" width=800 height=300></canvas>
+  <canvas id="canvas6" width=800 height=300></canvas>
+  <canvas id="canvas7" width=800 height=300></canvas>
+  <canvas id="canvas8" width=800 height=300></canvas>
+  <canvas id="canvas8" width=800 height=300></canvas>
+    
+  <div class = "buttonContainer">
+      <h2><font size="8">Main Menu</h2>
+          
+      <a href="./manufacture_product_report.html" class = "button">View Manufacturer Product Report</a>
+      <a href="./category_report.html" class = "button">View Category Report</a>
+      <br>
+      <a href="./actual_vs_predicted_revenue_for_gps_units.html" class = "button">View Actual vs Predicted Revenue for GPS units </a>
+      <a href="./store_revenue_by_year_by_state.html" class = "button">View Store Revenue by Year by State Report</a>
+      <a href="./air_conditioners_on_groundhog_day _report.html" class = "button">View Air Conditioners on Groundhog Day Report</a>
+      <a href="./state_highest_volume_for_each_category.html" class = "button">View State w Highest Volume for each Category Report</a>
+      <a href="./revenue_by_population.html" class = "button">View Revenue by Population Report</a>
+
+      <a href="./test.html" class = "button">Edit Holiday Information</a>
+      <a href="./test.html" class = "button">Edit Manager Information</a>
+      <a href="./test.html" class = "button">Edit Population</a>
+  </div>
+    <script>
+        $('#logout').click((e) => {
+            e.preventDefault();
+            sessionStorage.clear();
+            window.open('http://localhost:8888/Phase3/html/login.html', "_self");
+            console.log(sessionStorage.getItem("currentUser"));
+        })
+    </script>
+</body>
+</html>

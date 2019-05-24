@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Edit Manager</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        {% extends "template.html" %}
+        {% block content %}
+        <form method='POST'>
+        <section id="services" class="section-padding bg-gray">
+            
+          <div class="container">
+            <div class="section-header text-center">
+              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Edit Manager</h2>
+            </div>
+                  
+            <div class="row">
+                <div>
+                    <button type="button" class="btn btn-primary" id="add_manager" data-toggle="modal" data-target="#add_manager_modal">Add A Manager</button>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div>
+                    <button type="button" class="btn btn-primary" id="assign_manager" data-toggle="modal" data-target="#assign_manager_modal">Assign/Unassign Selected Manager</button>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div>
+                    <button type="button" class="btn btn-primary" id="activate_manager" data-toggle="modal" data-target="#activate_manager_modal">Activate/Deactivate Selected Manager</button>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div>
+                    <input class="btn btn-primary" type="submit" name="action" value="Remove Selected Manager">
+                </div>
+              </div><br>
+
+                <!-- Modal -->
+                <div class="modal fade" id="add_manager_modal" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLongTitle">Add A Manager</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                            <label for="new_manager_email"><b>New Manager Email:&nbsp;&nbsp;</b></label>
+                            <input name="new_manager_email">
+                            <br><br>
+                            <label for="new_manager_name"><b>New Manager Name:&nbsp;&nbsp;</b></label>
+                            <input name="new_manager_name">
+                            <br><br>
+                            <label for="employment_status"><b>Employment Status (1/0):&nbsp;&nbsp;</b></label>
+                            <input name="employment_status">
+                            <div class="modal-footer">
+                                <input class="btn btn-primary" type="submit" name="action" value="Add the manager">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                      
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              
+                <div class="modal fade" id="assign_manager_modal" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLongTitle">Assign Selected Manager</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                            <label for="assign_manager"><b>Assign:&nbsp;&nbsp;</b></label>
+                            <input type="checkbox" name="manager-assign" value="Assign">
+                            <br><br>
+                            <label for="unassign_manager"><b>Unassign:&nbsp;&nbsp;</b></label>
+                            <input type="checkbox" name="manager-assign" value="Unassign">
+                            <br><br>
+                            <label for="new_store"><b>New Store (Only for Assign):&nbsp;&nbsp;</b></label>
+                            <input name="new_store">
+                            <div class="modal-footer">
+                                <input class="btn btn-primary" type="submit" name="action" value="Assign/Unassign the manager">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                      
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              
+                <div class="modal fade" id="activate_manager_modal" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLongTitle">Activate Selected Manager</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                            <label for="activate_manager"><b>Activate:&nbsp;&nbsp;</b></label>
+                            <input type="checkbox" name="manager-activate" value="Activate">
+                            <br><br>
+                            <label for="deactivate_manager"><b>Deactivate:&nbsp;&nbsp;</b></label>
+                            <input type="checkbox" name="manager-activate" value="Deactivate">
+                            <div class="modal-footer">
+                                <input class="btn btn-primary" type="submit" name="action" value="Activate/Deactivate the manager">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                      
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+            
+              {% if error %}
+              <hr>
+                <div>
+                    <h6><b> {{ error }} </b></h6>
+              </div>
+              <hr><br>
+              {% endif %}
+              
+                <table id='report-table' class="table">
+                    {% if result %}
+                    <tr>
+                        <th>Email</th>
+                        <th>Manager Name</th>
+                        <th>Employment Status</th>
+                        <th>Store Number</th>
+                        <th>Selection</th>
+                    </tr>
+                    {% for row in result %}
+                    <tr>
+                        <td> {{ row.Email}}</td>
+                        <td> {{ row.manager_name }}</td>
+                        <td> {{ row.EmploymentStatus }}</td>
+                        <td> {{ row.StoreNumber }}</td>
+                        <td><input type="checkbox" name="manager-select" value="{{row.Email+'_'+row.StoreNumber|string}}"></td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+          </div>
+                       
+            
+        </section>
+        </form>
+        {% endblock %}
+        
+    </body>
+</html>

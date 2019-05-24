@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>State w Highest Volume for each Category Report</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="../css/startRating.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+            #cancel {
+                position: relative;
+                left: 70px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>State w Highest Volume for each Category Report</h2>
+            <label for="iname"><b>Choose Year<b></label>
+                <select name = "choose year" id = "year">
+                <option value="2000"> 2000 </option>
+                <option value="2001"> 2001 </option>
+                <option value="2002"> 2002 </option>
+                </select>
+            <br>    
+            <label for="iname"><b>Choose Date<b></label>   
+                <select name = "choose data" id = "date">
+                <option value="1"> 01 </option>
+                <option value="2"> 02 </option>
+                <option value="3"> 03 </option> 
+                </select>
+
+            <br>
+            <button type="button" id="view-drilldown" data-toggle="modal" data-target="#drillDownReportModel"><b>View Drill Down Report</b></button>
+                <div class="viewDrillDownReportModel">
+                    <div class="modal fade" id="drillDownReportModel" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Drill Down Report</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div style="width:100%; margin:auto;">
+                                        <div style="width:66%;" >
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td>State</td>
+                                                    <td><b>Example:NY</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Category</td>
+                                                    <td><b>Example:Game</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Year</td>
+                                                    <td><b>Example:2002</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Month</td>
+                                                    <td><b>Example:12</b></td>
+                                                </tr>
+
+                                            </table>
+
+                                            <table id='report-table' class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Store ID</th>
+                                                        <th>Street Address</th>
+                                                        <th>City</th>
+                                                        <th>Manager Names</th>
+                                                        <th>Manager Email</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class='template-row hidden'>
+                                                    <tr>
+                                                        <td class='store_id'></td>
+                                                        <td class="street_address"></td>
+                                                        <td class="city"></td>
+                                                        <td class="manager_names"></td>
+                                                        <td class="manager_emails"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <table id='report-table' class="table">
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>State Sold Highest Num Units</th>
+                        <th>Total Sold Units</th>
+                    </tr>
+                </thead>
+                <tbody class='template-row hidden'>
+                    <tr>
+                        <td class='category_name'></td>
+                        <td class="state_sold_highest_num_units"></td>
+                        <td class="total_sold_units"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+
+
+        
+  
+    </body>
+    <script src="../js/state_highest_volume_for_each_category.js"></script>
+    <script>
+        /*
+        function backToMenu(){
+            var position = sessionStorage.getItem("currentUserPosition");
+            console.log(position);
+
+            if (position == "user") {
+                window.open('http://localhost:8888/Phase3/html/main_menu.html', "_self");
+            }
+            
+        }
+        */
+    </script>
+
+</html>

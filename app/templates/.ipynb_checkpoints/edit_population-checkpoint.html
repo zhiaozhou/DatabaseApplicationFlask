@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Uplate Population</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="../css/startRating.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   </head>
+   <body>
+      <div class="container">
+         <h2>View City List</h2>
+         <button type="button" id="upload_population" data-toggle="modal" data-target="#editSelectedCity"><b>Edit Selected City</b></button>
+         <div class="viewEditSelectedCity">
+            <div class="modal fade" id="editSelectedCity" role="dialog">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h4 class="modal-title">Edit Selected City</h4>
+                     </div>
+                     <div class="modal-body">
+                        <div style="width:100%; margin:auto;">
+                           <div style="width:66%;" >
+                              <table style="width:100%">
+                                 <tr>
+                                    <td>City</td>
+                                    <td><b>Example:New York</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td>Population</td>
+                                    <td><b>Example:10000</b></td>
+                                 </tr>
+                              </table>
+                              <form id="register" method="post" action="">
+                                 <label for="new_population"><b>Update Population<b></label>
+                                 <input type="text" name="new_population">
+                              </form>
+                           </div>
+                        </div>
+                        <button type="submit" id="submit_upload_population"><b>Submit Change</b></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <table id='view-city-list' class="table">
+            <thead>
+               <tr>
+                  <th>City</th>
+                  <th>Population</th>
+               </tr>
+            </thead>
+            <tbody class='template-row hidden'>
+               <tr>
+                  <td class='city'></td>
+                  <td class="population"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Manufacturer Product Report</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        {% extends "template.html" %}
+        {% block content %}
+        <section id="services" class="section-padding bg-gray">
+            
+          <div class="container">
+            <div class="section-header text-center">
+              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Manufacture Product Report</h2>
+            </div>
+                <table id='report-table' class="table">
+                    {% if result %}
+                    <tr>
+                        <th>Manufacturer Name</th>
+                        <th>Total Product</th>
+                        <th>Average Retail Price</th>
+                        <th>Min Retail Price</th>
+                        <th>Max Retail Price</th>
+                        <th>Details</th>
+                    </tr>
+                    {% for row in result %}
+                    <tr>
+                        <td> {{ row.ManufacturerName }}</td>
+                        <td> {{ row.TotalProduct }}</td>
+                        <td> {{ row.ave_retail_price }}</td>
+                        <td> {{ row.min_retail_price }}</td>
+                        <td> {{ row.max_retail_price }}</td>
+                        {% set res_info = get_manufacturer_info(row.ManufacturerName) %}
+                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ row.ManufacturerName.replace(' ','') }}">More</button></td>
+                        <!-- Modal -->
+                        <div class="modal fade" id="{{ row.ManufacturerName.replace(' ','') }}" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="ModalLongTitle"> {{ row.ManufacturerName }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  <!-- Header -->
+                                    <div class='Header' style="width:100%;margin-left=10%">
+                                        <p>
+                                            Max Discount     :&nbsp;&nbsp;<b>{{ row.max_discount }}</b><br/>
+                                            Total Product    :&nbsp;&nbsp;<b>{{ row.TotalProduct }}</b><br/>
+                                            Average Retail Price    :&nbsp;&nbsp;<b>{{ row.ave_retail_price }}</b><br/>
+                                            Min Retail Price    :&nbsp;&nbsp;<b>{{ row.min_retail_price }}</b><br/>
+                                            Max Retail Price    :&nbsp;&nbsp;<b>{{ row.max_retail_price }}</b>
+                                        </p>    
+                                    </div>    
+                                    
+                                    <hr style="color:grey">
+                                  
+                                    <div class="Table" style="width:100%">
+                                        {% if res_info %}
+                                        <div class="Table-header">
+                                            <div class="Cell"><b>PID</b></div>
+                                            <div class="Cell"><b>Product Name</b></div>
+                                            <div class="Cell"><b>Category Name</b></div>
+                                            <div class="Cell"><b>Retail Price</b></div>
+                                        </div>
+                                        {% for row in res_info %}
+                                        <div class="Row">
+                                            <div class="Cell">{{ row.PID }}</div>
+                                            <div class="Cell">{{ row.product_name }}</div>
+                                            <div class="Cell">{{ row.CategoryName }}</div>
+                                            <div class="Cell">{{ row.retail_price }}</div>
+                                        </div>
+                                        {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+                                  
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div> 
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+          </div>
+                       
+            
+        </section>
+
+        {% endblock %}
+        
+    </body>
+</html>

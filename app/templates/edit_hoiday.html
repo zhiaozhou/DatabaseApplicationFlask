@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Edit Holiday</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="../css/startRating.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!--         <link rel="stylesheet" href="../css/style.css">
+         -->
+   </head>
+   <body>
+      <div class="container">
+         <h2>View Holiday List</h2>
+         <button type="button" id="edit_holiday" data-toggle="modal" data-target="#editSelectedHoliday"><b>Edit Selected Holiday</b></button>
+         <div class="viewEditSelectedHoliday">
+            <div class="modal fade" id="editSelectedHoliday" role="dialog">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h4 class="modal-title">Edit Selected Holiday</h4>
+                     </div>
+                     <div class="modal-body">
+                        <div style="width:100%; margin:auto;">
+                           <div style="width:66%;" >
+                              <table style="width:100%">
+                                 <tr>
+                                    <td>Calendar Date</td>
+                                    <td><b>Example:12/24/2019</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td>Holiday Name</td>
+                                    <td><b>Example:Chrismas</b></td>
+                                 </tr>
+                              </table>
+                              <form id="register" method="post" action="">
+                                 <label for="new_calendar_date"><b>Update Calendar Date<b></label>
+                                 <input type="text" name="new_calendar_date">
+                                 <br>
+                                 <label for="new_holiday_date"><b>Update Holiday Name</b></label>
+                                 <input type="text" name="new_holiday_date">
+                              </form>
+                           </div>
+                        </div>
+                        <button type="submit" id="submit_edit_holiday"><b>Submit Change</b></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <table id='view-holiday-list' class="table">
+            <thead>
+               <tr>
+                  <th>Calendar Date</th>
+                  <th>Holiday Name</th>
+               </tr>
+            </thead>
+            <tbody class='template-row hidden'>
+               <tr>
+                  <td class='calendar_date'></td>
+                  <td class="holiday_name"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="Team090">
+    <title>New Item for Auction</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+
+  </head>
+  <body>
+    <header>
+    </header>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src = "../js/load_options.js">
+    </script>
+
+
+    <script src = "../js/validate_listItem.js">
+    </script>
+
+
+    <h2>List your item</h2>
+
+
+    <form name="itemForm">
+      <!--onsubmit="validateForm()"-->
+      <label for="iname"><b>Item Name<b></label>
+      <input type="text" name="iname">
+      <br>
+      <label for="dsp"><b>Description</b></label>
+      <input type="text" name="dsp">
+      <br>
+
+      <label><b>Category<b></label>
+      <SELECT  id="category_list">
+      </SELECT>
+
+      <br>
+      <label <b>Condition<b></label>
+      <select name = "condition" id = "condition_list">
+      </select>
+      <br>
+
+      <label for="start_price"><b>Start auction bidding at $</b></label>
+      <input name="start_price" id = "sp">
+
+      <br>
+      <label for="min_price"><b>Minimum sale price $</b></label>
+      <input name="min_price" id="minp">
+      <br>
+      <label <b>Auction ends in<b></label>
+      <select name = "auction length" id = "auctionLength">
+         <option value="1">1 day</option>
+         <option value="3">3 days</option>
+         <option value="5">5 days</option>
+         <option value="7">7 days</option>
+      </select>
+      <br>
+      <label for="getnow_price"><b>Get It Now price $</b></label>
+      <input name="getnow_price">
+      <label for="getnow_price"><b>(optional)</b></label>
+      <br>
+      <label for="return"><b>Return Accepted</b></label>
+      <input type="checkbox" name="return" id ="returnCheck">
+      <br>
+
+    </form>
+
+    <div class="ListButton">
+        <button type="button" id = "listIt" onclick="listItem()"><b>List My Item<b></button>
+    </div>
+
+    <!--If cancel button is clicked, move back to main menu according to the currentUser position-->
+    <script>
+        function backToMenu(){
+            var position = sessionStorage.getItem("currentUserPosition");
+            //console.log(position);
+
+            if (position == "regular") {
+                window.open('http://localhost:8888/Phase3/html/main_menu.html', "_self");
+            }
+            else {
+                window.open('http://localhost:8888/Phase3/html/main_menu_admin.html', "_self");
+            }
+        }
+    </script>
+    <button type="button" onclick="backToMenu()"><b>Cancel<b></button>
+  </body>
+</html>

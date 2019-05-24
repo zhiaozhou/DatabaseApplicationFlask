@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Edit Manager</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="../css/startRating.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!--         <link rel="stylesheet" href="../css/style.css">
+         -->
+   </head>
+   <body>
+      <div class="container">
+         <h2>View Manager List</h2>
+         <button type="button" id="edit_manager" data-toggle="modal" data-target="#editSelectedManager"><b>Edit Selected Manager</b></button>
+         <button type="button" id="assign_unassign_manager" data-toggle="modal" data-target="#assignUnassignSelectedManager"><b>Assign/Unassgin Selected Manager</b></button>
+         <button type="button" id="delete_manager" data-toggle="modal" data-target="#deleteSelectedManager"><b>Delete Selected Manager</b></button>
+         <div class="viewEditSelectedHoliday">
+            <div class="modal fade" id="editSelectedManager" role="dialog">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h4 class="modal-title">Edit Selected Manager</h4>
+                     </div>
+                     <div class="modal-body">
+                        <div style="width:100%; margin:auto;">
+                           <div style="width:66%;" >
+                              <table style="width:100%">
+                                 <tr>
+                                    <td>Manager Name</td>
+                                    <td><b>Example:Daniel</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td>Manager Email</td>
+                                    <td><b>Example:daniel@google.com</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td>Manager Status</td>
+                                    <td><b>Example:Active</b></td>
+                                 </tr>
+                              </table>
+                              <form id="register" method="post" action="">
+                                 <label for="new_manager_name"><b>Update Manager Name<b></label>
+                                 <input type="text" name="new_manager_name">
+                                 <br>
+                                 <label for="new_manager_email"><b>Update Manager Email</b></label>
+                                 <input type="text" name="new_manager_email">
+
+                              </form>
+                           </div>
+                        </div>
+                        <input type="checkbox" name="manager_status" value="manager_active"> Active<br>
+                        <button type="submit" id="submit_edit_manager"><b>Submit Change</b></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="modal fade" id="assignUnassignSelectedManager" role="dialog">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                        <div class="modal-dialog">
+                                 <table id='view-store-list' class="table">
+                                 <thead>
+                                    <tr>
+                                       <th>Store List</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody class='template-row hidden'>
+                                    <tr>
+                                       <td class='store'></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                              <button type="submit" id="submit_assigned_store"><b>Assign Store</b></button>
+                              <button type="submit" id="submit_unassigned_store"><b>Unassign Store</b></button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <table id='view-manager-list' class="table">
+            <thead>
+               <tr>
+                  <th>Manager Name</th>
+                  <th>Manager Email</th>
+               </tr>
+            </thead>
+            <tbody class='template-row hidden'>
+               <tr>
+                  <td class='manager_name'></td>
+                  <td class="manager_email"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </body>
+</html>

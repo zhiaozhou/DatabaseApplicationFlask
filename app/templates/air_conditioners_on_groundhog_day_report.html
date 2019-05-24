@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Air Conditioners on Groundhog Day</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        {% extends "template.html" %}
+        {% block content %}
+        <section id="services" class="section-padding bg-gray">
+            
+          <div class="container">
+            <div class="section-header text-center">
+              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Air Conditioners on Groundhog Day</h2>
+            </div>
+                <table id='report-table' class="table">
+                    {% if result %}
+                    <tr>
+                        <th>Year</th>
+                        <th>Total Numbers of Items Sold Annually</th>
+                        <th>Items Sold Daily on Average</th>
+                        <th>Total Numbers of Items Sold on Groundhog Day</th>
+                    </tr>
+                    {% for row in result %}
+                    <tr>
+                        <td> {{ row.Year }}</td>
+                        <td> {{ row.ItemsSold_Annually }}</td>
+                        <td> {{ row.ItemsSold_DailyOnAverage }}</td>
+                        <td> {{ row.ItemsSold_OnGroundhog }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+          </div>
+                       
+            
+        </section>
+
+        {% endblock %}
+        
+    </body>
+</html>

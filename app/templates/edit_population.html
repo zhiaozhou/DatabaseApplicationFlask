@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Edit Population</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        {% extends "template.html" %}
+        {% block content %}
+        <form method='POST'>
+        <section id="services" class="section-padding bg-gray">
+            
+          <div class="container">
+            <div class="section-header text-center">
+              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Edit Population</h2>
+            </div>
+              
+                <div>
+                    <button type="button" class="btn btn-primary" id="edit_population" data-toggle="modal" data-target="#edit_population_modal">Edit Population</button>
+                </div><br>
+
+                <!-- Modal -->
+                <div class="modal fade" id="edit_population_modal" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLongTitle">Edit Population</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                            <label for="new_population"><b>New Population:&nbsp;&nbsp;</b></label>
+                            <input name="new_population">
+                            <br><br>
+                            <div class="modal-footer">
+                                <input class="btn btn-primary" type="submit" value="Save changes">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                      
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+            
+              {% if error %}
+              <hr>
+                <div>
+                    <h6><b> {{ error }} </b></h6>
+              </div>
+              <hr><br>
+              {% endif %}
+              
+                <table id='report-table' class="table">
+                    {% if result %}
+                    <tr>
+                        <th>City Name</th>
+                        <th>State</th>
+                        <th>Population</th>
+                        <th>City Size</th>
+                        <th>Selection</th>
+                    </tr>
+                    {% for row in result %}
+                    <tr>
+                        <td> {{ row.CityName }}</td>
+                        <td> {{ row.State }}</td>
+                        <td> {{ row.population }}</td>
+                        <td> {{ row.city_size }}</td>
+                        <td><input type="checkbox" name="city-select" value="{{row.CityName+'_'+row.State}}"></td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+          </div>
+                       
+            
+        </section>
+        </form>
+        {% endblock %}
+        
+    </body>
+</html>

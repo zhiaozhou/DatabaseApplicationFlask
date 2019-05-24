@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="Team090">
+    <title>Team 090 - Data Warehouse - Main Menu</title>
+    
+</head>
+<body>
+  {% extends "template.html" %}
+  {% block content %}
+    
+    <header>
+        <script type = "text/javascript"
+                src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+
+    </header>
+<!--   <canvas id="canvas0" width=800 height=300></canvas>
+  <canvas id="canvas1" width=800 height=300></canvas>
+  <canvas id="canvas2" width=800 height=300></canvas>
+  <canvas id="canvas3" width=800 height=300></canvas>
+  <canvas id="canvas4" width=800 height=300></canvas>
+  <canvas id="canvas5" width=800 height=300></canvas>
+  <canvas id="canvas6" width=800 height=300></canvas>
+  <canvas id="canvas7" width=800 height=300></canvas>
+  <canvas id="canvas8" width=800 height=300></canvas>
+  <canvas id="canvas8" width=800 height=300></canvas> -->
+    
+    <section id="services" class="section-padding bg-gray">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Main Menu</h2>
+        </div>
+          
+<!--         simple counts -->
+                <table id='report-table' class="table">
+                    {% if result %}
+                    <tr>
+                        <th></th>
+                        <th>Store</th>
+                        <th>Manufacturer</th>
+                        <th>Product</th>
+                        <th>Manager</th>
+                    </tr>
+                    {% for row in result %}
+                    <tr>
+                        <td><b> Simple Counts </b></td>
+                        <td> {{ row.store }}</td>
+                        <td> {{ row.manufacturer }}</td>
+                        <td> {{ row.product }}</td>
+                        <td> {{ row.manager }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+          
+          
+        <div class="row">
+          <!-- Services item 1-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.3s">
+              <div class="icon">
+                <i class="lni-pencil"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('manufacture_product_report') }}">View Manufacturer Product Report</a></h3>
+                <p>Show each manufacturer’s name, total number of products, average retail price, minimum retail price, and maximum retail price...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 2-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.6s">
+              <div class="icon">
+                <i class="lni-briefcase"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('category_report') }}">View Category Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h3>
+                <p>Show each category's name, total number of products in that category, total number of unique manufacturers...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 3-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="0.9s">
+              <div class="icon">
+                <i class="lni-cog"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('actual_vs_predicted_revenue_for_gps_units') }}">View Actual vs Predicted Revenue for GPS units</a></h3>
+                <p>Show how much revenue was actually generated from a product’s sales to a predicted revenue if never offered on sale...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 4-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1.2s">
+              <div class="icon">
+                <i class="lni-mobile"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('store_revenue_by_year_by_state') }}">View Store Revenue by Year by State Report</a></h3>
+                <p>Show the revenue collected by stores per state grouped by year...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 5-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1.5s">
+              <div class="icon">
+                <i class="lni-layers"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('air_conditioners_on_groundhog_day_report') }}">View Air Conditioners on Groundhog Day Report</a></h3>
+                <p>Show if air conditioner sales seem to spike on Groundhog Day...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 6-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1.8s">
+              <div class="icon">
+                <i class="lni-rocket"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('state_highest_volume_for_each_category') }}">View State with Highest Volume for each Category Report</a></h3>
+                <p>Show all stores in the states that sell the most number of units for each category...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 7-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1.8s">
+              <div class="icon">
+                <i class="lni-book"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('revenue_by_population') }}">View Revenue by Population Report</a></h3>
+                <p>Show what the average revenue is for specific population categories, and to see if there is a trend for growth...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 8-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1.8s">
+              <div class="icon">
+                <i class="lni-bi-cycle"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('edit_holiday') }}">Edit Holiday Information&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h3>
+                <p>Edit Holiday Information......</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 9-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1.8s">
+              <div class="icon">
+                <i class="lni-camera"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('edit_manager') }}">Edit Manager Information&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h3>
+                <p>Edit Manager Information......</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item 10-->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1.8s">
+              <div class="icon">
+                <i class="lni-camera"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="{{ url_for('edit_population') }}">Edit Population Information&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h3>
+                <p>Edit Population...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  {% endblock %}
+</body>
+</html>
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Actual versus Predicted Revenue for GPS units</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        {% extends "template.html" %}
+        {% block content %}
+        <section id="services" class="section-padding bg-gray">
+            
+          <div class="container">
+            <div class="section-header text-center">
+              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Actual versus Predicted Revenue for GPS units</h2>
+            </div>
+                <table id='report-table' class="table">
+                    {% if result %}
+                    <tr>
+                        <th>PID</th>
+                        <th>Product Name</th>
+                        <th>Retail Price</th>
+                        <th>Total Units Sold</th>
+                        <th>Total Units Sold without Discounts</th>
+                        <th>Total Units Sold with Discounts</th>
+                        <th>Actual Revenue</th>
+                        <th>Predicted Revenue</th>
+                        <th>Revenue Difference</th>
+                    </tr>
+                    {% for row in result %}
+                    <tr>
+                        <td> {{ row.PID }}</td>
+                        <td> {{ row.product_name }}</td>
+                        <td> {{ row.retail_price }}</td>
+                        <td> {{ row.TotalUnitsSold }}</td>
+                        <td> {{ row.TotalUnitsSoldNoDiscount }}</td>
+                        <td> {{ row.TotalUnitsSoldWithDiscount }}</td>
+                        <td> {{ row.ActualRevenue }}</td>
+                        <td> {{ row.PredictedRevenue }}</td>
+                        <td> {{ row.Difference }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+          </div>
+                       
+            
+        </section>
+
+        {% endblock %}
+        
+    </body>
+</html>

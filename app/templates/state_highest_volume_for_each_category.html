@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>State with Highest Volume for each Category</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        {% extends "template.html" %}
+        {% block content %}
+        <section id="services" class="section-padding bg-gray">
+
+          <div class="container">
+            <div class="section-header text-center">
+              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">State with Highest Volume for each Category</h2>
+            </div>
+
+
+            <div class="row">
+                <div class="form-group col-xs-6">
+                    <label for="year-select"><b>Choose a Year</b></label>
+                    <select class="form-control" id="year-select">
+                        <option value="">--Please choose an option--</option>
+                        {% for row in years %}
+                            <option value="{{ row.Year }}">{{ row.Year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="month-select"><b>Choose a Month</b></label>
+                    <select class="form-control" id="month-select">
+                        <option value="">--Please choose an option--</option>
+                        {% for row in months %}
+                            <option value="{{ row.Month }}">{{ row.Month }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary" id="process_input">Submit</button>
+            </div><br><br>
+              
+            <table id='report-table' class="table">
+            </table>                            
+
+          </div>
+                       
+            
+        </section>
+        
+        <div id='modals'>
+        </div>
+        
+        <script type="text/javascript">
+          $(document).ready(function() {
+
+            $('#process_input').bind('click', function() {
+
+                $.getJSON('/_update_report6', {
+                    selected_year: $('#year-select').val(),
+                    selected_month: $('#month-select').val(),
+
+                }).success(function(data) {
+                    $('#report-table').html(data.html_string_selected);
+                })
+            });
+            $('#process_input').bind('click', function() {
+
+                $.getJSON('/_update_report6_modal', {
+                    selected_year: $('#year-select').val(),
+                    selected_month: $('#month-select').val(),
+
+                }).success(function(data) {
+                    $('#modals').html(data.html_string_selected);
+                })
+            });
+          });
+        </script>    
+        {% endblock %}
+        
+    </body>
+</html>
+
+

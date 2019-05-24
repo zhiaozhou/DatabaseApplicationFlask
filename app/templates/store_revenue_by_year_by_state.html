@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Store Revenue by Year by State</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        {% extends "template.html" %}
+        {% block content %}
+        <section id="services" class="section-padding bg-gray">
+
+          <div class="container">
+            <div class="section-header text-center">
+              <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Store Revenue by Year by State</h2>
+            </div>
+
+
+            <div class="row">
+                <div class="form-group col-xs-6">
+                    <label for="state-select"><b>Choose a state</b></label>
+                    <select class="form-control" id="state-select">
+                        <option value="">--Please choose an option--</option>
+                        {% for row in states %}
+                            <option value="{{ row.State }}">{{ row.State }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary" id="process_input">Submit</button>
+            </div><br><br>
+              
+            <table id='report-table' class="table">
+            </table>                            
+
+          </div>
+                       
+            
+        </section>
+        <script type="text/javascript">
+          $(document).ready(function() {
+
+            $('#process_input').bind('click', function() {
+
+                $.getJSON('/_update_report4', {
+                    selected_state: $('#state-select').val()
+
+                }).success(function(data) {
+                    $('#report-table').html(data.html_string_selected);
+                })
+              return false;
+
+            });
+          });
+        </script>    
+        {% endblock %}
+        
+    </body>
+</html>
